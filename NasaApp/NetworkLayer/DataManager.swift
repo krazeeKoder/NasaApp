@@ -16,9 +16,7 @@ class DataManager {
     
     func updateDailyImage(completionHandler: @escaping (_ success: Bool) -> Void) {
         currentNetworkRequest = NetworkManager.shared.request(url: APIManager.shared.constructDailyImageUrl(), requestMethod: .get, errorHandler: { (error) in
-            guard error._code != NSURLErrorCancelled else {
-                return
-            }
+            guard error._code != NSURLErrorCancelled else { return }
             self.currentNetworkRequest = nil
             completionHandler(false)
         }) { (jsonData) in
@@ -28,12 +26,9 @@ class DataManager {
     }
     
     private func parseJsonIntoDailyInfo(json: Any, completionHandler: @escaping (Bool) -> Void) {
-        guard let json = json as? Data else {
-            return
-        }
+        guard let json = json as? Data else { return }
         
         let decoder = JSONDecoder()
-        
         do {
             self.nasaDailyUpdateInfo = try decoder.decode(NasaDailyUpdateInfo.self, from: json)
             completionHandler(true)

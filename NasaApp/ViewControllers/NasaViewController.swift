@@ -12,6 +12,7 @@ class NasaViewController: UIViewController {
     @IBOutlet weak var dailyImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var dailyImageViewHeightConstraint: NSLayoutConstraint!
     private var presenter: NasaPresenter?
     
     deinit {
@@ -21,12 +22,6 @@ class NasaViewController: UIViewController {
         super.viewDidLoad()
         presenter = NasaPresenter(view: self)
         presenter?.configureForLaunch()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func imagePressed(_ sender: UITapGestureRecognizer) {
@@ -48,7 +43,19 @@ extension NasaViewController: NasaViewProtocol {
     }
     
     func displayFullScreen() {
-        print("Show Full Screen")
+        self.dailyImageViewHeightConstraint.constant = self.view.frame.height
+        UIView.animate(withDuration: 0.35) {
+            self.view.layoutIfNeeded()
+            self.titleLabel.alpha = 0
+        }
+    }
+    
+    func displayHalfScreen() {
+        self.dailyImageViewHeightConstraint.constant = 0
+        UIView.animate(withDuration: 0.35) {
+            self.view.layoutIfNeeded()
+            self.titleLabel.alpha = 1.0
+        }
     }
 }
 

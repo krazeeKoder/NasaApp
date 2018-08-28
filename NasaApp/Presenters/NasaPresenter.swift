@@ -11,10 +11,17 @@ protocol NasaViewProtocol {
     func update(pictureOfTheDay picture: Data?, title: String?)
     func update(errorMessage: String, title: String)
     func displayFullScreen()
+    func displayHalfScreen()
 }
 
 class NasaPresenter {
+    enum ImageState {
+        case full
+        case half
+    }
+    
     private var view: NasaViewProtocol?
+    private var imageState: ImageState = .half
 
     init(view: NasaViewProtocol?) {
         self.view = view
@@ -25,7 +32,14 @@ class NasaPresenter {
     }
     
     func handleImagePress() {
-        view?.displayFullScreen()
+        switch self.imageState {
+        case .half:
+            view?.displayFullScreen()
+            self.imageState = .full
+        case .full:
+            view?.displayHalfScreen()
+            self.imageState = .half
+        }
     }
     
     private func updateDailyPicture() {

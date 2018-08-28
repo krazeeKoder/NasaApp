@@ -34,6 +34,12 @@ class NetworkManager {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let dataTask = session.dataTask(with: request, completionHandler: { (data, response, error) in
             DispatchQueue.main.async {
+                if let response = response as? HTTPURLResponse {
+                    if !(response.statusCode == 200 || response.statusCode == 202) {
+                        errorHandler(NSError(domain: "Invalid Status Code", code: 400, userInfo: nil))
+                    }
+                }
+                
                 if let error = error {
                     errorHandler(error)
                 }

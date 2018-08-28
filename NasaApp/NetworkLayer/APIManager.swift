@@ -10,7 +10,6 @@ import Foundation
 
 class APIManager {
     static let shared = APIManager()
-    
     private let baseNasaUrl = "https://api.nasa.gov/"
     private let apiKey = "NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo"
     private let apiKeyQueryParam = "api_key="
@@ -19,5 +18,4 @@ class APIManager {
     func constructDailyImageUrl() -> String {
         return baseNasaUrl + dailyImageEndpoint + apiKeyQueryParam + apiKey
     }
-    
 }
