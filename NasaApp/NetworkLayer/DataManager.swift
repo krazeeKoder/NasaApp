@@ -27,7 +27,6 @@ class DataManager {
     
     private func parseJsonIntoDailyInfo(json: Any, completionHandler: @escaping (Bool) -> Void) {
         guard let json = json as? Data else { return }
-        
         let decoder = JSONDecoder()
         do {
             self.nasaDailyUpdateInfo = try decoder.decode(NasaDailyUpdateInfo.self, from: json)

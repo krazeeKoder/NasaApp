@@ -25,6 +25,8 @@ class NasaViewController: UIViewController {
         presenter?.configureForLaunch()
     }
     
+    //MARK: - IBActions
+    
     @IBAction func imagePressed(_ sender: UITapGestureRecognizer) {
         presenter?.handleImagePress()
     }
@@ -36,10 +38,10 @@ class NasaViewController: UIViewController {
         self.activityIndicator.activityIndicatorViewStyle = .gray
         self.activityIndicator.hidesWhenStopped = true
     }
-    
 }
 
 extension NasaViewController: NasaViewProtocol {
+    //MARK: - NASAViewProtocol Methods
     func update(pictureOfTheDay picture: Data?, title: String?) {
         self.activityIndicator.stopAnimating()
         if let picture = picture, let title = title {

@@ -19,11 +19,12 @@ enum RequestMethod: String {
 class NetworkManager {
     static let shared = NetworkManager()
     private init() {}
-    static let timeoutInterval: Double = 7.0 //In seconds
+    static let timeoutInterval: Double = 7.0
     
     func request(url: String, requestMethod: RequestMethod = .get, errorHandler: @escaping (_ error: Error) -> Void, successHandler: @escaping (_ json: Any) -> Void) -> URLSessionDataTask? {
         
         guard let url = URL(string: url), UIApplication.shared.canOpenURL(url) else {
+            errorHandler(NSError(domain: "Invalid URL", code: 400, userInfo: nil)
             return nil
         }
         
