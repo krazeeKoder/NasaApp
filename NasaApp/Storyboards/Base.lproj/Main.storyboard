@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Nasa View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="NasaViewController" customModule="NasaApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ueq-sB-aE0">
+                                <rect key="frame" x="0.0" y="177" width="375" height="333.5"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="YS0-HF-kJY" appends="YES" id="Wig-Jj-5R7"/>
+                                </connections>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJM-ek-ugr">
+                                <rect key="frame" x="0.0" y="525.5" width="375" height="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hJM-ek-ugr" secondAttribute="trailing" id="5ft-QL-Vzh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ueq-sB-aE0" secondAttribute="trailing" id="ALo-dd-nvM"/>
+                            <constraint firstItem="hJM-ek-ugr" firstAttribute="top" secondItem="ueq-sB-aE0" secondAttribute="bottom" constant="15" id="D3H-1O-qV3"/>
+                            <constraint firstItem="ueq-sB-aE0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Pt1-q4-FiN"/>
+                            <constraint firstItem="hJM-ek-ugr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Rai-eB-mva"/>
+                            <constraint firstItem="ueq-sB-aE0" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="URX-CF-1VT"/>
+                            <constraint firstItem="ueq-sB-aE0" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="hIg-FA-y0j"/>
+                            <constraint firstItem="ueq-sB-aE0" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="mRn-g1-TZ0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="dailyImageView" destination="ueq-sB-aE0" id="kxE-fz-tUC"/>
+                        <outlet property="titleLabel" destination="hJM-ek-ugr" id="6O6-2w-9t7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="YS0-HF-kJY">
+                    <connections>
+                        <action selector="imagePressed:" destination="BYZ-38-t0r" id="j9K-nC-4g2"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+        </scene>
+    </scenes>
+</document>
